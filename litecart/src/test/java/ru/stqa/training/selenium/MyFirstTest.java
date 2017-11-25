@@ -26,7 +26,9 @@ public class MyFirstTest {
 
   @Test
   public void myFirstTest() {
-    driver.get("http://www.google.com/");
+    driver.get("http://www.yandex.by/");
+    driver.findElement(By.id("text")).sendKeys("Test");
+    driver.findElement(By.xpath("//div[@class='search2__button']//button[.='Найти']")).click();
 
 
 
