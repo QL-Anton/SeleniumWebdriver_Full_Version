@@ -30,8 +30,8 @@ public class TestClickAllElements extends TestBase {
  //Прокликиваем все элементы меню, если у меню есть подменю, то кликаем по нему и проверяем наличие заголовка
     int count = wd.findElements(By.id("app-")).size();
     for (int i = 0; i < count; i++) {
-      List<WebElement> elements = wd.findElements(By.id("app-"));
-      elements.get(i).click();
+
+
       assertTrue(isElementPresent(By.tagName("h1")));
 
       System.out.println("Menu " + wd.findElement(By.tagName("h1")).getText().toString());

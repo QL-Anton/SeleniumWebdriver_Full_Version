@@ -3,23 +3,30 @@ package ru.stqa.training.selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
 /**
  * Created by Антон on 01.12.2017.
  */
 public class TestBase {
-  FirefoxDriver wd;
-
+  WebDriver wd;
+  public  WebDriverWait wait;
   @BeforeMethod
   public void setUp() throws Exception {
-    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/tools/ff52/firefox.exe"));
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/tools/ff52/firefox.exe"));
+    wd=new ChromeDriver();
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wait = new WebDriverWait(wd,30);
   }
 
 
@@ -32,6 +39,7 @@ public class TestBase {
     wd.findElement(By.name("password")).clear();
     wd.findElement(By.name("password")).sendKeys("admin");
     wd.findElement(By.xpath("//div[@class='footer']//button[.='Login']")).click();
+    wait.until(titleIs("My Store"));
   }
 
 
