@@ -62,7 +62,7 @@ public class SortCountriesTests extends TestBase {
                 click();
 
         List<String> listOfZonesCountries = new ArrayList<>(); //создаём список для зон, который будем сортировать
-        List<String> unsortedListOfZonesCountries = new ArrayList<>(); //такой же списо зон, но его не будем сортировать
+        List<String> unsortedListOfZonesCountries = new ArrayList<>(); //такой же список зон, но его не будем сортировать
         int countriesZonesCount = wd.findElements(By.cssSelector("#main tbody tr")).size(); //кол-во зон в стране
         for (int i = 0; i < countriesZonesCount; i++) {
           //находим и добавляем зоны в список
@@ -75,11 +75,11 @@ public class SortCountriesTests extends TestBase {
         }
 
         Collections.sort(listOfZonesCountries);  //сортируем зоны
-        //Assert.assertEquals(listOfZonesCountries,unsortedListOfNameCountries);
+
 
 
         System.out.println(listOfZonesCountries);
-        Assert.assertEquals(listOfZonesCountries, unsortedListOfZonesCountries); //проверяем, что зоны до сортировки и после совпадают, это значит, что зон были отсортированы по алфавиту
+        Assert.assertEquals(listOfZonesCountries, unsortedListOfZonesCountries); //проверяем, что зоны до сортировки и после совпадают, это значит, что зоны были отсортированы по алфавиту
         wd.get("http://localhost/litecart/admin/?app=countries&doc=countries");
       }
     }
@@ -93,13 +93,7 @@ public class SortCountriesTests extends TestBase {
 
 
 
-     /* wd.findElements(By.cssSelector("#main tbody tr")).get(i).findElements(By.tagName("td")).get(4).click();
-      int countChoseCountryZones = wd.findElements(By.cssSelector("#main tbody tr")).size();
 
-        System.out.println(wd.findElements(By.cssSelector("#main tbody tr")).get(j).findElements(By.tagName("td")).get(3).getAttribute("value"));
-        wd.findElements(By.id("app-")).get(2).click();
-
-    */
 
 }
 
