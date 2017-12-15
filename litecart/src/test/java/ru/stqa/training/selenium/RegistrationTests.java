@@ -14,10 +14,8 @@ public class RegistrationTests extends TestBase {
     wd.get("http://localhost/litecart/en/");
     wd.findElement(By.cssSelector("#box-account-login a")).click(); //инициируем регистрацию нового пользователя
     wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Test_First_Name");
     wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
     wd.findElement(By.name("lastname")).sendKeys("Test_Last_Name");
 
     //Генерируем уникальный e-mail
@@ -26,15 +24,12 @@ public class RegistrationTests extends TestBase {
     System.out.println(email);
     //Заполняем обязательные для регистрации поля
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("email")).click();
-    wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("email")).clear();
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("email")).sendKeys(email);
 
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).click();
-    wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).clear();
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).sendKeys("test");
 
     wd.findElement(By.name("confirmed_password")).click();
-    wd.findElement(By.name("confirmed_password")).clear();
     wd.findElement(By.name("confirmed_password")).sendKeys("test");
     //Подтверждаем создание аккаунта
     wd.findElement(By.name("create_account")).click();
