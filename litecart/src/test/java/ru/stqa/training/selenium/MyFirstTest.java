@@ -31,7 +31,6 @@ public class MyFirstTest {
     driver.findElement(By.xpath("//div[@class='search2__button']//button[.='Найти']")).click();
 
 
-
   }
 
 

@@ -28,7 +28,7 @@ public class WorkWithBinTests extends TestBase {
     int k = Integer.parseInt(wd.findElement(By.id("cart")).findElement(By.cssSelector("span.quantity")).getAttribute("innerText"));
 
 
-    //добавляем товар в корзину до тех пор,пока кол-во товаром в корзине не будет равно трём
+    //добавляем товар в корзину до тех пор,пока кол-во товаров в корзине не будет равно трём
     while (k != 3) {
       wd.findElement(By.linkText("Popular Products")).click(); //товары добавляем из категории популярные
       wd.findElements(By.cssSelector("#popular-products a.link")).get(1).click(); //выбираем второй в списке товар
