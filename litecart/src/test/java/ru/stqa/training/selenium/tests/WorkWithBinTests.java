@@ -1,10 +1,10 @@
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import ru.stqa.training.selenium.pages.Page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 
@@ -18,8 +18,7 @@ public class WorkWithBinTests extends TestBase {
   public void testWorkWithBin() {
 
 
-    wd.get("http://localhost/litecart/en/");  //переходи на страницу магазина
-    wait.until(titleContains("Online Store"));
+    goToMainPage();
 
 
     String countItemInBin = wd.findElement(By.id("cart")).findElement(By.cssSelector("span.quantity")).getAttribute("innerText"); //кол-во товаров в корзине
@@ -35,8 +34,7 @@ public class WorkWithBinTests extends TestBase {
       wd.findElement(By.name("add_cart_product")).click();  //добавляем в корзину
       wait.until(ExpectedConditions.attributeContains(By.cssSelector("span.quantity"), "innerText", String.valueOf(k + 1))); //ждём пока кол-во товара в корзине не обновится
       k = k + 1; //увеличиваем кол-во товара в корзине на 1
-      wd.get("http://localhost/litecart/en/");  //переходим на страницу магазина
-      wait.until(titleContains("Online Store"));
+      goToMainPage();
     }
 
     //Переходим в корзину
@@ -56,4 +54,9 @@ public class WorkWithBinTests extends TestBase {
 
 
   }
+  public void goToMainPage() {
+    wd.get("http://localhost/litecart/en/");  //переходи на страницу магазина
+    wait.until(titleContains("Online Store"));
+  }
+
 }

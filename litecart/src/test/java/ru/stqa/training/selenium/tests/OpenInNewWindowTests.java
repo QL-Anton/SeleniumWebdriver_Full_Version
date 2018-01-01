@@ -1,11 +1,8 @@
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.Set;
 
 /**

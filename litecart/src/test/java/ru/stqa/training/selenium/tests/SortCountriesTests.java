@@ -1,16 +1,10 @@
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.*;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * Created by Антон on 03.12.2017.
