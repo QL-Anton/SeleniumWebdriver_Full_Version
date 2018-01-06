@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
-import ru.stqa.training.selenium.pages.Page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 
@@ -31,7 +30,7 @@ public class WorkWithBinTests extends TestBase {
     while (k != 3) {
       wd.findElement(By.linkText("Popular Products")).click(); //товары добавляем из категории популярные
       wd.findElements(By.cssSelector("#popular-products a.link")).get(1).click(); //выбираем второй в списке товар
-      wd.findElement(By.name("add_cart_product")).click();  //добавляем в корзину
+      wd.findElement(By.cssSelector("button.btn.btn-success")).click();  //добавляем в корзину
       wait.until(ExpectedConditions.attributeContains(By.cssSelector("span.quantity"), "innerText", String.valueOf(k + 1))); //ждём пока кол-во товара в корзине не обновится
       k = k + 1; //увеличиваем кол-во товара в корзине на 1
       goToMainPage();
@@ -49,6 +48,7 @@ public class WorkWithBinTests extends TestBase {
 
       //ждём пока в таблице внизу изменится цена после удаления товара из корзины
       wait.until(ExpectedConditions.stalenessOf(price));
+
     }
 
 

@@ -27,10 +27,10 @@ public class RegistrationTests extends TestBase {
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("email")).sendKeys(email);
 
     wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).click();
-    wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).sendKeys("test");
+    wd.findElement(By.cssSelector("#box-create-account")).findElement(By.name("password")).sendKeys("application");
 
     wd.findElement(By.name("confirmed_password")).click();
-    wd.findElement(By.name("confirmed_password")).sendKeys("test");
+    wd.findElement(By.name("confirmed_password")).sendKeys("application");
     //Подтверждаем создание аккаунта
     wd.findElement(By.name("create_account")).click();
 
@@ -39,7 +39,7 @@ public class RegistrationTests extends TestBase {
 
     //Залогиниваемся  вновь созданным аккаунтом
     wd.findElement(By.name("email")).sendKeys(email);
-    wd.findElement(By.name("password")).sendKeys("test");
+    wd.findElement(By.name("password")).sendKeys("application");
     wd.findElement(By.name("login")).click();
 
     //разлогиниваемся

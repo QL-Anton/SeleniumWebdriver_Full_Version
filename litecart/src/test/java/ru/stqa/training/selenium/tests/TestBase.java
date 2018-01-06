@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import ru.stqa.training.selenium.applicationManager.Application;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -24,13 +23,13 @@ public class TestBase {
   WebDriver wd;
   public WebDriverWait wait;
 
-  public Application app;
+
 
   @BeforeMethod
   public void setUp() throws Exception {
     //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/tools/ff52/firefox.exe"));
-    app = new Application();
-    wd = new ChromeDriver();
+
+   wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wait = new WebDriverWait(wd, 30);
   }

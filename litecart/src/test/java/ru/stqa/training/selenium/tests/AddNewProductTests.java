@@ -32,7 +32,7 @@ public class AddNewProductTests extends TestBase {
     wd.findElement(By.linkText("Information")).click();
     new Select(wd.findElement(By.name("manufacturer_id"))).selectByVisibleText("ACME Corp."); //Выбираем корпорацию
 
-    wd.findElement(By.name("keywords")).sendKeys("test");
+    wd.findElement(By.name("keywords")).sendKeys("application");
 
     wd.findElement(By.name("short_description[en]")).sendKeys("Good item!");
 
