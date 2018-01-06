@@ -10,6 +10,7 @@ import ru.stqa.training.selenium2.model.Customer;
 import ru.stqa.training.selenium2.pages.*;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Антон on 01.01.2018.
@@ -26,7 +27,9 @@ private WorkWithBinPage workWithBinPage;
 
   public Application() {
     driver = new ChromeDriver();
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wait = new WebDriverWait(driver, 30);
+
     registrationPage = new RegistrationPage(driver);
     adminPanelLoginPage = new AdminPanelLoginPage(driver);
     customerListPage = new CustomerListPage(driver);
@@ -88,12 +91,12 @@ private WorkWithBinPage workWithBinPage;
       sleep(500);
       workWithMainPage.chooseItem();
       //workWithMainPage.items.get(1).click();
-      sleep(10000);
+    //  sleep(10000);
       workWithMainPage.addCartProduct.click();
       wait.until(ExpectedConditions.attributeContains(By.cssSelector("span.quantity"), "innerText", String.valueOf(k + 1)));
       k = k + 1;
       workWithMainPage.open();
-      sleep(5000);
+    //  sleep(5000);
 
     }
     removeItemsFromBin();
@@ -106,7 +109,7 @@ private WorkWithBinPage workWithBinPage;
 
 
     workWithBinPage.goToBin();
-      sleep(10000);
+    //  sleep(10000);
     while (workWithBinPage.countItemsIntoBin()!=0){
 
       workWithBinPage.checkWhenAllItemsRemove();
