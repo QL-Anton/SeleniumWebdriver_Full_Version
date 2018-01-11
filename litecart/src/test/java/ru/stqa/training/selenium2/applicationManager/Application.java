@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import ru.stqa.training.selenium2.model.Customer;
 import ru.stqa.training.selenium2.pages.*;
 
@@ -23,7 +24,7 @@ public class Application {
   private AdminPanelLoginPage adminPanelLoginPage;
   private CustomerListPage customerListPage;
   private WorkWithMainPage workWithMainPage;
-private WorkWithBinPage workWithBinPage;
+  private WorkWithBinPage workWithBinPage;
 
   public Application() {
     driver = new ChromeDriver();
@@ -34,7 +35,7 @@ private WorkWithBinPage workWithBinPage;
     adminPanelLoginPage = new AdminPanelLoginPage(driver);
     customerListPage = new CustomerListPage(driver);
     workWithMainPage = new WorkWithMainPage(driver);
-    workWithBinPage=new WorkWithBinPage(driver);
+    workWithBinPage = new WorkWithBinPage(driver);
   }
 
   public void quit() {
@@ -65,12 +66,17 @@ private WorkWithBinPage workWithBinPage;
     return customerListPage.open().getCustomerIds();
   }
 
+  public  int countItemsIntoBinOnMainPahe(){
+    return  Integer.parseInt(driver.findElement(By.cssSelector("span.quantity")).getAttribute("innerText"));
+  }
+
+
   public WorkWithMainPage workWithMainPage() {
     return workWithMainPage;
   }
 
-  public  WorkWithBinPage workWithBinPage(){
-    return  workWithBinPage;
+  public WorkWithBinPage workWithBinPage() {
+    return workWithBinPage;
   }
 
   public void sleep(int n) {
@@ -86,31 +92,27 @@ private WorkWithBinPage workWithBinPage;
 
     int k = workWithMainPage.returnCurrentCountItemsInBin();
     while (k != 3) {
-      // sleep(500);
       workWithMainPage.popularProducts.click();
       sleep(500);
       workWithMainPage.chooseItem();
-      //workWithMainPage.items.get(1).click();
-    //  sleep(10000);
       workWithMainPage.addCartProduct.click();
       wait.until(ExpectedConditions.attributeContains(By.cssSelector("span.quantity"), "innerText", String.valueOf(k + 1)));
       k = k + 1;
-      workWithMainPage.open();
-    //  sleep(5000);
+            workWithMainPage.open();
+
 
     }
-    removeItemsFromBin();
+
+   // removeItemsFromBin();
   }
 
 
-
-    public void removeItemsFromBin(){
-
+  public void removeItemsFromBin() {
 
 
     workWithBinPage.goToBin();
-    //  sleep(10000);
-    while (workWithBinPage.countItemsIntoBin()!=0){
+
+    while (workWithBinPage.countItemsIntoBin() != 0) {
 
       workWithBinPage.checkWhenAllItemsRemove();
 
@@ -118,6 +120,6 @@ private WorkWithBinPage workWithBinPage;
 
   }
 
-  }
+}
 
 

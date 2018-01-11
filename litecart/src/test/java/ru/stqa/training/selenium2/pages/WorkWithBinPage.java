@@ -38,6 +38,7 @@ public class WorkWithBinPage extends Page {
 
 
 
+
   public void checkWhenAllItemsRemove() {
     WebElement price = driver.findElements(By.cssSelector("#box-checkout-summary tr")).get(0).findElements(By.cssSelector("td")).get(1);
     driver.findElements(By.name("remove_cart_item")).get(0).click();
